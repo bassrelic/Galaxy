@@ -1,0 +1,46 @@
+{
+    "God":{
+        "name": "God",
+        "description": "beliefs in a singular god",
+        "randNames": 1,
+        "baseIntensity": 0.7,
+        "notCompatible":{
+            "name": "Pantheon"
+        }
+    },
+    "Pantheon":{
+        "name": "Pantheon",
+        "description": "in a patheon of gods",
+        "randNames": 5,
+        "baseIntensity": 0.7,
+        "notCompatible":{
+            "name": "God"
+        }
+    },
+    "Xenophob":{
+        "name": "Xenophob",
+        "description": "that all other species are dangerous to themselves",
+        "randNames": 0,
+        "baseIntensity": 0.7,
+        "notCompatible":{
+            "name": "Xenophile"
+        }
+    },
+    "Xenophile":{
+        "name": "Xenophile",
+        "description": "that all other species are a welcome source of culture",
+        "randNames": 0,
+        "baseIntensity": 0.7,
+        "notCompatible":{
+            "name": "Xenophob"
+        }
+    },
+    "Ai":{
+        "name": "AI",
+        "description": "that AI can solve any problem",
+        "randNames": 0,
+        "baseIntensity": 0.7,
+        "notCompatible":{
+        }
+    }
+}
