@@ -3,6 +3,9 @@ This is intended to be a space game where you control your own species, interact
 Work in progress as you can see...
 
 ## How to set up?
+Create venv
+```virtualenv --python python <venvname>```
+
 Activate venv by sourcing activation
 ```source <yourVenv>/Scripts/activate```
 
