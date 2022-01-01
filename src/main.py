@@ -13,5 +13,6 @@ for sol in sols:
         print(planet.get_name())
         for civilization in planet.get_civilizations():
             print(civilization.get_name())
+            print(civilization.get_count())
             for belief in civilization.get_beliefs():
                 print(belief.get_name())
