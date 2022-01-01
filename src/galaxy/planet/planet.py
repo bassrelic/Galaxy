@@ -13,4 +13,5 @@ class Planet(Object):
         self.civilization_list.append(Civilization("Humies"))
 
     def get_civilizations(self):
+        """This method returns a list of civilizations living on this planet"""
         return self.civilization_list

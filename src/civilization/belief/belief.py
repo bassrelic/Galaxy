@@ -12,13 +12,14 @@ class Belief:
     @classmethod
     def gen_random_belief(cls):
         """This method generates a random beief with random intensity"""
-        with open('src\\civilization\\belief\\beliefs.json') as json_file:
+        with open('src\\civilization\\belief\\beliefs.json', encoding="utf-8") as json_file:
             data = json.load(json_file)
-            for mayorKey, subdict in data.items():
-                print(mayorKey)
+            for mayor_key in data.items():
+                print(mayor_key)
         name = "standard"
         intensity = random()
         return Belief(name, intensity)
 
     def get_name(self):
+        """This method returns the name of this belief"""
         return self.name
