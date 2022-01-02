@@ -41,6 +41,8 @@ platformdirs==2.4.0
     #   pylint
 py2puml==0.5.2
     # via -r requirements.in
+pygame==2.1.2
+    # via -r requirements.in
 pylint==2.12.2
     # via -r requirements.in
 toml==0.10.2
