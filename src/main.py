@@ -2,9 +2,11 @@
 
 import pygame
 from galaxy.galaxy import Galaxy
+from datetime import timedelta, date
 
 WHITE = ( 255, 255, 255)
 BLACK = ( 0, 0, 0)
+SECOND = 1000
 
 def main():
     """This is the main Function of this Game"""
@@ -24,27 +26,34 @@ def main():
                 for belief in civilization.get_beliefs():
                     print(belief.get_name())
 
+    date = date.fromisoformat('2022-01-01')
+    timeDeltaPerSec = timedelta(days=1)
+
     # pygame section
     pygame.init()
     myfont = pygame.freetype.SysFont('Arial', 20)
-
     screen = pygame.display.set_mode((500, 500))
-
     pygame.display.set_caption("Galaxy")
     active = True
     clock = pygame.time.Clock()
+
+    # events
+    update_time = pygame.USEREVENT + 0
+    pygame.time.set_timer(update_time, SECOND)
 
     while active:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 active = False
                 print("Player quitted this game")
-            elif event.type == pygame.KEYDOWN:
-                print("Spieler hat Taste gedrückt")
 
+            elif event.type == pygame.KEYDOWN:
                 # Quit game on escape
                 if event.key == pygame.K_ESCAPE:
                     active = False
+
+            elif event.type == update_time:
+                date = date + timeDeltaPerSec
 
         # Logic here
 
@@ -53,6 +62,7 @@ def main():
 
         # Draw Objects
         myfont.render_to(screen, (450, 0), str(round(clock.get_fps(), 2)), WHITE)
+        myfont.render_to(screen, (0, 0), str(year), WHITE)
 
         # Update screen
         pygame.display.flip()
