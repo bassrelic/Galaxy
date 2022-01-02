@@ -1,23 +1,11 @@
 """This module defines planets"""
-from random import gauss, randint, random
 from object.object import Object
-from civilization.civilization import Civilization
 
 class Planet(Object):
     """This class defines planets"""
-    def __init__(self, name):
-        super().__init__(name)
-        self.diameter = -1
-        while self.diameter <= 0:
-            self.diameter = int(gauss(12741000, 10000))
-        self.min_temp = randint(-100, 100)
-        self.max_temp = -100
-        while self.min_temp < self.max_temp:
-            self.max_temp = randint(-100, 100)
-        self.atmosphere = random()
-        self.hospitability = random()
+    def __init__(self, name, posx, posy):
+        super().__init__(name, posx, posy)
         self.civilization_list = []
-        self.civilization_list.append(Civilization("Humies"))
 
     def get_civilizations(self):
         """This method returns a list of civilizations living on this planet"""
@@ -30,3 +18,26 @@ class Planet(Object):
     def step(self):
         """This method defines the behavour of this planet per step"""
         print("Step executed")
+
+    def set_temp_range(self, min, max):
+        """This method lets you set the temperature range on this planet"""
+        self.min_temp = min
+        self.max_temp = max
+
+    def set_atmosphere(self, atmosphere):
+        """This method lets you set the atmosphere quality (between 0 and 1)"""
+        if 0 <= atmosphere <= 1:
+            self.atmosphere = atmosphere
+        else:
+            raise ValueError("Number not between 0 and 1")
+
+    def set_diameter(self, diameter):
+        """This function lets you set the diameter"""
+        self.diameter = diameter
+
+    def set_hospitability(self, hospitability):
+        """This method lets you set the hospitability quality (between 0 and 1)"""
+        if 0 <= hospitability <= 1:
+            self.hospitability = hospitability
+        else:
+            raise ValueError("Number not between 0 and 1")
