@@ -1,8 +1,8 @@
 """This is the main file"""
 
+from datetime import timedelta, date
 import pygame
 from galaxy.galaxy import Galaxy
-from datetime import timedelta, date
 
 WHITE = ( 255, 255, 255)
 BLACK = ( 0, 0, 0)
@@ -25,9 +25,13 @@ def main():
                 print(civilization.get_count())
                 for belief in civilization.get_beliefs():
                     print(belief.get_name())
+        astroids = sol.get_astroids()
+        for astroid in astroids:
+            print(astroid.get_name())
+            print(astroid.get_size())
 
-    date = date.fromisoformat('2022-01-01')
-    timeDeltaPerSec = timedelta(days=1)
+    curr_date = date.fromisoformat('2022-01-01')
+    time_delta_per_sec = timedelta(days=1)
 
     # pygame section
     pygame.init()
@@ -53,7 +57,7 @@ def main():
                     active = False
 
             elif event.type == update_time:
-                date = date + timeDeltaPerSec
+                curr_date = curr_date + time_delta_per_sec
 
         # Logic here
 
@@ -62,7 +66,7 @@ def main():
 
         # Draw Objects
         myfont.render_to(screen, (450, 0), str(round(clock.get_fps(), 2)), WHITE)
-        myfont.render_to(screen, (0, 0), str(year), WHITE)
+        myfont.render_to(screen, (0, 0), str(curr_date), WHITE)
 
         # Update screen
         pygame.display.flip()

@@ -6,7 +6,7 @@ class Galaxy:
     def __init__(self, name):
         self.name = name
         self.sol_list = []
-        self.sol_list.append(System("Sonne"))
+        self.sol_list.append(System("Sun"))
         self.sol_list.append(System("Saggritarius"))
         print(f'This Galaxy is called {self.name}')
 
