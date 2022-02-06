@@ -20,9 +20,9 @@ class Planet(Object):
         """This method returns the size ( diameter ) in meters"""
         return self.diameter
 
-    def step():
+    def step(self):
         """This method defines the behavour of this planet per step"""
-        print("Step executed")
+
 
     def set_temp_range(self, min_temp, max_temp):
         """This method lets you set the temperature range on this planet"""

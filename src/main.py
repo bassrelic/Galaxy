@@ -4,10 +4,7 @@ from datetime import timedelta, date
 import pygame
 from galaxy.galaxy import Galaxy
 from  game_logic.ui_handlers import DataslateHandler
-
-WHITE = ( 255, 255, 255)
-BLACK = ( 0, 0, 0)
-SECOND = 1000
+import config
 
 def main():
     """This is the main Function of this Game"""
@@ -16,11 +13,11 @@ def main():
 
     # pygame section
     pygame.init()
-    myfont = pygame.freetype.SysFont('Arial', 20)
-    screen = pygame.display.set_mode((500, 500))
+    config.myfont = pygame.freetype.SysFont('Arial', 20)
+    config.screen = pygame.display.set_mode((500, 500))
     pygame.display.set_caption("Galaxy")
     active = True
-    clock = pygame.time.Clock()
+    config.clock = pygame.time.Clock()
 
     # testing stuff
     galaxy = Galaxy("Milkyway")
@@ -54,7 +51,7 @@ def main():
 
     # events
     update_time = pygame.USEREVENT + 0
-    pygame.time.set_timer(update_time, SECOND)
+    pygame.time.set_timer(update_time, config.SECOND)
 
     # logic
     ds_h = DataslateHandler()
@@ -79,21 +76,24 @@ def main():
                 curr_date = curr_date + time_delta_per_sec
 
         # Logic here
+        for sprite in all_sprites_list:
+            sprite.step()
+
         all_sprites_list.update()
 
         # Clear screen
-        screen.fill(BLACK)
+        config.screen.fill(config.BLACK)
 
         # Draw Objects
-        myfont.render_to(screen, (450, 0), str(round(clock.get_fps(), 2)), WHITE)
-        myfont.render_to(screen, (0, 0), str(curr_date), WHITE)
-        all_sprites_list.draw(screen)
+        config.myfont.render_to(config.screen, (450, 0), str(round(config.clock.get_fps(), 2)), config.WHITE)
+        config.myfont.render_to(config.screen, (0, 0), str(curr_date), config.WHITE)
+        all_sprites_list.draw(config.screen)
 
         # Update screen
         pygame.display.flip()
 
         # Refresh time
-        clock.tick(60)
+        config.clock.tick(60)
 
     pygame.quit()
 
