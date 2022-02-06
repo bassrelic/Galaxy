@@ -56,7 +56,20 @@ def main():
     pygame.time.set_timer(update_time, SECOND)
 
     while active:
+
+        # Check cursor position
+        mouse_position = pygame.mouse.get_pos()
+        selected_sprites = None
+        for sprite in all_sprites_list:
+            if sprite.rect.collidepoint(mouse_position):
+                selected_sprites = sprite
+
         for event in pygame.event.get():
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if selected_sprites is not None:
+                    print("clicked object: " + selected_sprites.get_name())
+
             if event.type == pygame.QUIT:
                 active = False
                 print("Player quitted this game")

@@ -1,11 +1,12 @@
 """This module defines objects in regards to pysical properties and locations"""
-from object.uiObject import UiObject
+from object.ui_object import UiObject
 
 class Object(UiObject):
     """This class defines objects in regards to pysical properties and locations"""
     def __init__(self, name, posx, posy):
         super().__init__(posx, posy)
         self.name = name
+        self.path = None
         print(self.name)
 
     def get_name(self):
