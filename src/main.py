@@ -3,7 +3,7 @@
 from datetime import timedelta, date
 import pygame
 from galaxy.galaxy import Galaxy
-from object.data_window import Dataslate
+from  game_logic.ui_handlers import DataslateHandler
 
 WHITE = ( 255, 255, 255)
 BLACK = ( 0, 0, 0)
@@ -56,47 +56,15 @@ def main():
     update_time = pygame.USEREVENT + 0
     pygame.time.set_timer(update_time, SECOND)
 
-    # UiElements
-    dataslate = None
-    selected_sprites = None
+    # logic
+    ds_h = DataslateHandler()
 
     while active:
-
-        # Check cursor position
-        mouse_position = pygame.mouse.get_pos()
 
         for event in pygame.event.get():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-
-                for sprite in all_sprites_list:
-                    if sprite.rect.collidepoint(mouse_position):
-                        selected_sprites = sprite
-                        break
-                    else:
-                        selected_sprites = None
-
-                if selected_sprites is not None:
-                    print("clicked object: " + selected_sprites.get_name())
-                    mouse_x_pos = pygame.mouse.get_pos()[0]
-                    mouse_y_pos = pygame.mouse.get_pos()[1]
-                    intermed_obj = Dataslate(selected_sprites.get_name(), mouse_x_pos, mouse_y_pos)
-                    
-                    if dataslate is not None:
-                        if intermed_obj.get_name() is not dataslate.get_name():
-                            all_sprites_list.remove(dataslate)
-                            del dataslate
-                            dataslate = Dataslate(selected_sprites.get_name(), mouse_x_pos, mouse_y_pos)
-                            all_sprites_list.add(dataslate)
-                        else:
-                            all_sprites_list.remove(dataslate)
-                            del dataslate
-                            dataslate = None
-                    else:
-                        dataslate = Dataslate(selected_sprites.get_name(), mouse_x_pos, mouse_y_pos)
-                        all_sprites_list.add(dataslate)
-
-                    del intermed_obj
+                ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
                 active = False
