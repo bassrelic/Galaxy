@@ -6,6 +6,11 @@ class Planet(Object):
     def __init__(self, name, posx, posy):
         super().__init__(name, posx, posy)
         self.civilization_list = []
+        self.min_temp = 0
+        self.max_temp = 0
+        self.atmosphere = 0
+        self.diameter = 0
+        self.hospitability = 0
 
     def get_civilizations(self):
         """This method returns a list of civilizations living on this planet"""
@@ -15,14 +20,14 @@ class Planet(Object):
         """This method returns the size ( diameter ) in meters"""
         return self.diameter
 
-    def step(self):
+    def step():
         """This method defines the behavour of this planet per step"""
         print("Step executed")
 
-    def set_temp_range(self, min, max):
+    def set_temp_range(self, min_temp, max_temp):
         """This method lets you set the temperature range on this planet"""
-        self.min_temp = min
-        self.max_temp = max
+        self.min_temp = min_temp
+        self.max_temp = max_temp
 
     def set_atmosphere(self, atmosphere):
         """This method lets you set the atmosphere quality (between 0 and 1)"""

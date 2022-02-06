@@ -58,17 +58,17 @@ def main():
     while active:
 
         # Check cursor position
-        mousePosition = pygame.mouse.get_pos()
-        selectedSprite = None
+        mouse_position = pygame.mouse.get_pos()
+        selected_sprites = None
         for sprite in all_sprites_list:
-            if sprite.rect.collidepoint(mousePosition):
-                selectedSprite = sprite
+            if sprite.rect.collidepoint(mouse_position):
+                selected_sprites = sprite
 
         for event in pygame.event.get():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if selectedSprite != None:
-                    print("clicked object: " + selectedSprite.get_name())
+                if selected_sprites is not None:
+                    print("clicked object: " + selected_sprites.get_name())
 
             if event.type == pygame.QUIT:
                 active = False
