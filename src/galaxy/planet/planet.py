@@ -23,7 +23,6 @@ class Planet(Object):
     def step(self):
         """This method defines the behavour of this planet per step"""
 
-
     def set_temp_range(self, min_temp, max_temp):
         """This method lets you set the temperature range on this planet"""
         self.min_temp = min_temp
@@ -46,3 +45,7 @@ class Planet(Object):
             self.hospitability = hospitability
         else:
             raise ValueError("Number not between 0 and 1")
+
+    def get_dataslate_data(self):
+        """This function returns the necessairy data for the corresponding dataslate"""
+        return self.min_temp

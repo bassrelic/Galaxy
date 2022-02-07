@@ -34,6 +34,7 @@ class DataslateHandler():
                     del self.dataslate
                     self.dataslate = Dataslate(self.selected_sprite.get_name(), mouse_x_pos, mouse_y_pos)
                     all_sprites_list.add(self.dataslate)
+                    self.dataslate.set_parent(self.selected_sprite)
                 else:
                     all_sprites_list.remove(self.dataslate)
                     del self.dataslate
@@ -42,5 +43,6 @@ class DataslateHandler():
             else:
                 self.dataslate = Dataslate(self.selected_sprite.get_name(), mouse_x_pos, mouse_y_pos)
                 all_sprites_list.add(self.dataslate)
+                self.dataslate.set_parent(self.selected_sprite)
 
             del intermed_obj
