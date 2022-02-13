@@ -8,7 +8,7 @@ class Dataslate(Object):
     def __init__(self, name, posx, posy):
         self.name = name
         self.path = "res\\ui_elements\\dataslate.png"
-        self.width = 100
+        self.width = 200
         self.height = 100
         self.parent = None
         super().__init__(self.name, posx, posy)

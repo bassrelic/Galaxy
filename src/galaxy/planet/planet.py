@@ -31,30 +31,30 @@ class Planet(Object):
     def set_atmosphere(self, atmosphere):
         """This method lets you set the atmosphere quality (between 0 and 1)"""
         if 0 <= atmosphere <= 1:
-            self.atmosphere = atmosphere
+            self.atmosphere = format(atmosphere, '.2f')
         else:
             raise ValueError("Number not between 0 and 1")
 
     def set_diameter(self, diameter):
         """This function lets you set the diameter"""
-        self.diameter = diameter
+        self.diameter = format(diameter, '.2f')
 
     def set_hospitability(self, hospitability):
         """This method lets you set the hospitability quality (between 0 and 1)"""
         if 0 <= hospitability <= 1:
-            self.hospitability = hospitability
+            self.hospitability = format(hospitability, '.2f')
         else:
             raise ValueError("Number not between 0 and 1")
 
     def get_dataslate_data(self):
         """This function returns a dict containing the necessairy data for the corresponding dataslate"""
         dataslate_data = {
-            "Name:"          : self.name,
-            "min temp:"      : self.min_temp,
-            "max temp:"      : self.max_temp,
-            "atmosphere:"    : self.atmosphere,
-            "diameter:"      : self.diameter,
-            "hospitability:" : self.hospitability
+            "Name"          : self.name,
+            "min temp"      : str(self.min_temp) + " °C",
+            "max temp"      : str(self.max_temp) + " °C",
+            "diameter"      : str(self.diameter) + " km",
+            "atmosphere"    : str(self.atmosphere) + " %",
+            "hospitability" : str(self.hospitability) + "%",
         }
 
         return dataslate_data
