@@ -47,5 +47,14 @@ class Planet(Object):
             raise ValueError("Number not between 0 and 1")
 
     def get_dataslate_data(self):
-        """This function returns the necessairy data for the corresponding dataslate"""
-        return self.min_temp
+        """This function returns a dict containing the necessairy data for the corresponding dataslate"""
+        dataslate_data = {
+            "Name:"          : self.name,
+            "min temp:"      : self.min_temp,
+            "max temp:"      : self.max_temp,
+            "atmosphere:"    : self.atmosphere,
+            "diameter:"      : self.diameter,
+            "hospitability:" : self.hospitability
+        }
+
+        return dataslate_data
