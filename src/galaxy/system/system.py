@@ -23,3 +23,11 @@ class System(Object):
     def get_astroids(self):
         """This method gets the list of associated astroids"""
         return self.astroid_list
+
+    def get_dataslate_data(self):
+        """This function returns a dict containing the necessairy data for the corresponding dataslate"""
+        dataslate_data = {
+            "Name:"          : self.name
+        }
+
+        return dataslate_data
