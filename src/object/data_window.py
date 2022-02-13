@@ -9,7 +9,7 @@ class Dataslate(Object):
         self.name = name
         self.path = "res\\ui_elements\\dataslate.png"
         self.width = 200
-        self.height = 100
+        self.height = 150
         self.parent = None
         super().__init__(self.name, posx, posy)
 
@@ -18,11 +18,11 @@ class Dataslate(Object):
         font = pygame.font.SysFont('Arial', 16)
         data_dict = self.parent.get_dataslate_data()
         writetext = ''
-        y_pos_text = 0
+        y_pos_text = 20
         for data_type, data_value in data_dict.items():
             writetext = str(data_type) + " : " + str(data_value)
             text = font.render(str(writetext), True, config.WHITE)
-            self.image.blit(text, (0, y_pos_text))
+            self.image.blit(text, (15, y_pos_text))
             y_pos_text = y_pos_text + 15
 
     def set_parent(self, parent):
