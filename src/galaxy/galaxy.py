@@ -13,3 +13,6 @@ class Galaxy:
     def get_sols(self):
         """This method gets a list of associated solarsystems"""
         return self.sol_list
+
+    def step(self):
+        """This method defines the behavour of this galaxy per step"""

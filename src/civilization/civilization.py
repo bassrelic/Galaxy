@@ -27,3 +27,6 @@ class Civilization:
     def get_count(self):
         """This Method returns the count of individuals this civilization consists of"""
         return self.count
+
+    def step(self):
+        """This method defines the behavour of this civilization per step"""

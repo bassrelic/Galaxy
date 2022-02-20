@@ -31,3 +31,6 @@ class System(Object):
         }
 
         return dataslate_data
+
+    def step(self):
+        """This method defines the behavour of this system per step"""
