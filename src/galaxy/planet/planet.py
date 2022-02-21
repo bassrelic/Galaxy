@@ -20,6 +20,14 @@ class Planet(Object):
         """This method returns the size ( diameter ) in meters"""
         return self.diameter
 
+    def get_min_temp(self):
+        """This Method returns the minimum temperature in °C"""
+        return self.min_temp
+
+    def get_max_temp(self):
+        """This Method returns the maximal temperature in °C"""
+        return self.max_temp
+
     def step(self):
         """This method defines the behavour of this planet per step"""
 

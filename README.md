@@ -22,3 +22,8 @@ in root folder. Documentation should be created in /doc/
 Run
 ```pylint --rcfile .pylintrc src/```
 in root folder. Results should be shown in console.
+
+### How to run tests?
+Run
+```pytest```
+in root folder.
