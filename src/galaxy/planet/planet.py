@@ -28,6 +28,14 @@ class Planet(Object):
         """This Method returns the maximal temperature in °C"""
         return self.max_temp
 
+    def get_atmosphere(self):
+        """This method returns the atmosphere quality (between 0 and 1)"""
+        return self.atmosphere
+
+    def get_hospitability(self):
+        """This method returns the hospitability (between 0 and 1)"""
+        return self.hospitability
+
     def step(self):
         """This method defines the behavour of this planet per step"""
 
@@ -62,7 +70,7 @@ class Planet(Object):
             "max temp"      : str(self.max_temp) + " °C",
             "diameter"      : str(self.diameter) + " km",
             "atmosphere"    : str(self.atmosphere) + " %",
-            "hospitability" : str(self.hospitability) + "%",
+            "hospitability" : str(self.hospitability) + " %",
         }
 
         return dataslate_data

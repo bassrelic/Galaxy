@@ -1,6 +1,4 @@
 """ Tests for the Planet Module """
-import pygame
-import config
 from galaxy.planet.planet import Planet
 
 
