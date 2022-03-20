@@ -24,6 +24,10 @@ class Civilization:
         """This method returns a list of beliefs this civilization has"""
         return self.belief_list
 
+    def get_technologies(self):
+        """This method returns a list of technologies this civilization has"""
+        return self.technologie_list
+
     def get_count(self):
         """This Method returns the count of individuals this civilization consists of"""
         return self.count

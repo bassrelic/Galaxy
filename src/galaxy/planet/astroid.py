@@ -12,7 +12,7 @@ class Astroid(Planet):
         diameter = -1
         while diameter <= 0:
             diameter = int(gauss(100,1000))
-        self.set_diameter(diameter)
+        self.set_diameter( diameter )
         self.set_temp_range(-100, -100)
         self.set_atmosphere(0)
         self.set_hospitability(0)

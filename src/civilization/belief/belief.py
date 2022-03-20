@@ -23,3 +23,7 @@ class Belief:
     def get_name(self):
         """This method returns the name of this belief"""
         return self.name
+
+    def get_intensity(self):
+        """This method returns the intensity of this belief"""
+        return self.intensity
