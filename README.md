@@ -18,6 +18,15 @@ Run Doxygen using
 ```doxygen```
 in root folder. Documentation should be created in /doc/
 
+or
+
+Run Sphinx autodoc from docs folder using
+```sphinx-apidoc -o ./source ../src```
+
+To create html documentation run 
+
+```make clean``` followed by ```make html``` in the same folder.
+
 ### How to run linting?
 Run
 ```pylint --rcfile .pylintrc src/```
