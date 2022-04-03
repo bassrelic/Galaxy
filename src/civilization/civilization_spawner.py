@@ -1,6 +1,4 @@
 """This module defined a spawner checking environment values to spawn a civilization"""
-from asyncio.windows_events import NULL
-from calendar import c
 from civilization.civilization import Civilization
 
 def spawn_civilization(planet):
@@ -25,4 +23,4 @@ def spawn_civilization(planet):
         return civ
 
     print("SPAWNER:   Nothing Spawned")
-    return NULL
+    return None

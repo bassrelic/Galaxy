@@ -1,5 +1,4 @@
 """This module defines Astroids"""
-from asyncio.windows_events import NULL
 from random import random, gauss, randint
 from galaxy.planet.planet import Planet
 from civilization.civilization_spawner import spawn_civilization
@@ -24,5 +23,5 @@ class Terrestrical(Planet):
         self.set_hospitability(random())
 
         new_civ = spawn_civilization(self)
-        if new_civ != NULL:
+        if new_civ is not None:
             self.civilization_list.append( new_civ )

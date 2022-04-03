@@ -71,7 +71,7 @@ class Planet(Object):
             civ_list_cleaned = civ_list[:-3]
         else:
             civ_list_cleaned = "None"
-            
+
         dataslate_data = {
             "Name"          : self.name,
             "min temp"      : str(self.min_temp) + " °C",
