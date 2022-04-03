@@ -28,3 +28,28 @@ def test_get_technologies():
     assert technologies[0].get_name() == "Fire"
     for obj in technologies:
         assert isinstance(obj, Technology)
+
+def test_get_min_atmosphere():
+    """ Testing the get_min_atmosphere method"""
+    atmosphere = civ.get_min_atmosphere()
+    assert atmosphere >= 0
+    assert atmosphere <= 1
+
+def test_get_min_temp():
+    """ Testing the get_min_temp method"""
+    temp = civ.get_min_temp()
+    assert temp <= 100
+    assert temp >= -100
+
+def test_get_max_temp():
+    """ Testing the get_max_temp method"""
+    temp = civ.get_max_temp()
+    assert temp <= 100
+    assert temp >= -100
+
+def test_temp_range():
+    """ Testing if min temp < max temp"""
+    min_temp = civ.get_min_temp()
+    max_temp = civ.get_max_temp()
+
+    assert min_temp <= max_temp

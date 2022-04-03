@@ -69,7 +69,7 @@ def main():
 
             elif event.type == pygame.KEYDOWN:
                 # Quit game on escape
-                if event.key == pygame.K_ESCAPE:
+                if event.key in [pygame.K_ESCAPE, pygame.K_q]:
                     active = False
 
             elif event.type == update_time:
