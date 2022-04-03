@@ -64,6 +64,14 @@ class Planet(Object):
 
     def get_dataslate_data(self):
         """This function returns a dict containing the necessairy data for the corresponding dataslate"""
+        civ_list = ""
+        if len(self.civilization_list) > 0:
+            for item in self.civilization_list:
+                civ_list = str(civ_list + item.get_name() + " , ")
+            civ_list_cleaned = civ_list[:-3]
+        else:
+            civ_list_cleaned = "None"
+            
         dataslate_data = {
             "Name"          : self.name,
             "min temp"      : str(self.min_temp) + " °C",
@@ -71,6 +79,7 @@ class Planet(Object):
             "diameter"      : str(self.diameter) + " km",
             "atmosphere"    : str(self.atmosphere) + " %",
             "hospitability" : str(self.hospitability) + " %",
+            "civilizations" : civ_list_cleaned,
         }
 
         return dataslate_data

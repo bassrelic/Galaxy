@@ -7,7 +7,6 @@ class Galaxy:
         self.name = name
         self.sol_list = []
         self.sol_list.append(System("Sun"))
-        self.sol_list.append(System("Saggritarius"))
         print(f'This Galaxy is called {self.name}')
 
     def get_sols(self):

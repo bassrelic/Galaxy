@@ -14,8 +14,8 @@ class Belief:
         """This method generates a random beief with random intensity"""
         with open('src\\civilization\\belief\\beliefs.json', encoding="utf-8") as json_file:
             data = json.load(json_file)
-            for mayor_key in data.items():
-                print(mayor_key)
+            #for mayor_key in data.items():
+                #print(mayor_key)
         name = "standard"
         intensity = random()
         return Belief(name, intensity)
