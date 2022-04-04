@@ -1,4 +1,5 @@
 """This module defines planets"""
+from civilization.civilization import Civilization
 from object.object import Object
 
 class Planet(Object):
@@ -61,6 +62,13 @@ class Planet(Object):
             self.hospitability = format(hospitability, '.2f')
         else:
             raise ValueError("Number not between 0 and 1")
+
+    def add_civilization(self, civilization):
+        """This method adds a civilization to the planets civilization list"""
+        if isinstance(civilization, Civilization):
+            self.civilization_list.append(civilization)
+        else:
+            raise TypeError
 
     def get_dataslate_data(self):
         """This function returns a dict containing the necessairy data for the corresponding dataslate"""

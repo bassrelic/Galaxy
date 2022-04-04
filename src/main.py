@@ -1,12 +1,11 @@
 """This is the main file"""
-
 from datetime import timedelta, date
 import pygame
 from galaxy.galaxy import Galaxy
 from  game_logic.ui_handlers import DataslateHandler
 import config
 
-def main():
+if __name__ == '__main__':
     """This is the main Function of this Game"""
     curr_date = date.fromisoformat('2022-01-01')
     time_delta_per_sec = timedelta(days=1)
@@ -96,6 +95,3 @@ def main():
         config.clock.tick(60)
 
     pygame.quit()
-
-if __name__ == '__main__':
-    main()
