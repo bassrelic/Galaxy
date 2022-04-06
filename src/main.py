@@ -13,13 +13,21 @@ if __name__ == '__main__':
     # pygame section
     pygame.init()
     config.myfont = pygame.freetype.SysFont('Arial', 20)
-    config.screen = pygame.display.set_mode((500, 500))
+    config.screen = pygame.display.set_mode()
     pygame.display.set_caption("Galaxy")
 
     icon = pygame.image.load(config.ICONPATH).convert_alpha()
     pygame.display.set_icon(icon)
+
+    window_size = pygame.display.get_window_size()
+
+
     active = True
     config.clock = pygame.time.Clock()
+
+    # location of ui elements
+    fps_counter_loc_x = window_size[0] - 50
+    fps_counter_loc_y = 0
 
     # testing stuff
     galaxy = Galaxy("Milkyway")
@@ -87,7 +95,8 @@ if __name__ == '__main__':
         config.screen.fill(config.BLACK)
 
         # Draw Objects
-        config.myfont.render_to(config.screen, (450, 0), str(round(config.clock.get_fps(), 2)), config.WHITE)
+        fps_counter = str(round(config.clock.get_fps(), 2))
+        config.myfont.render_to(config.screen, (fps_counter_loc_x, fps_counter_loc_y), fps_counter, config.WHITE)
         config.myfont.render_to(config.screen, (0, 0), str(curr_date), config.WHITE)
         all_sprites_list.draw(config.screen)
 
