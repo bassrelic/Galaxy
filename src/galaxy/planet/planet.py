@@ -1,4 +1,4 @@
-"""This module defines planets"""
+"""This module defines planets aka wanderers - any natural object of space falls in this category"""
 from civilization.civilization import Civilization
 from object.object import Object
 
