@@ -15,7 +15,13 @@ if __name__ == '__main__':
     config.myfont = pygame.freetype.SysFont('Arial', 20)
     config.screen = pygame.display.set_mode()
     pygame.display.set_caption("Galaxy")
+
+    icon = pygame.image.load(config.ICONPATH).convert_alpha()
+    pygame.display.set_icon(icon)
+
     window_size = pygame.display.get_window_size()
+
+
     active = True
     config.clock = pygame.time.Clock()
 
