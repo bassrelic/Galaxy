@@ -7,3 +7,5 @@ SECOND = 1000
 clock = None
 myfont = None
 screen = None
+
+ICONPATH = "res\\icons\\icon.png"
