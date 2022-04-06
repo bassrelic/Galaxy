@@ -63,9 +63,9 @@ def add_civilization():
     civ = Civilization("Marsians")
     terrestrical.add_civilization(civ)
 
-    civList = terrestrical.get_civilizations()
-    assert len(civList) == 1
-    assert civList[1].get_name() == "Marsians"
+    civ_list = terrestrical.get_civilizations()
+    assert len(civ_list) == 1
+    assert civ_list[1].get_name() == "Marsians"
 
 def test_get_dataslate_data():
     """This method tests the returned dict containing the necessairy data for the corresponding dataslate"""
