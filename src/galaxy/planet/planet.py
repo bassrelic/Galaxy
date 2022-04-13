@@ -39,6 +39,9 @@ class Planet(Object):
 
     def step(self):
         """This method defines the behavour of this planet per step"""
+        if len(self.civilization_list) > 0:
+            for civ in self.civilization_list:
+                civ.step()
 
     def set_temp_range(self, min_temp, max_temp):
         """This method lets you set the temperature range on this planet"""
@@ -72,14 +75,6 @@ class Planet(Object):
 
     def get_dataslate_data(self):
         """This function returns a dict containing the necessairy data for the corresponding dataslate"""
-        civ_list = ""
-        if len(self.civilization_list) > 0:
-            for item in self.civilization_list:
-                civ_list = str(civ_list + item.get_name() + " , ")
-            civ_list_cleaned = civ_list[:-3]
-        else:
-            civ_list_cleaned = "None"
-
         dataslate_data = {
             "Name"          : self.name,
             "min temp"      : str(self.min_temp) + " °C",
@@ -87,7 +82,16 @@ class Planet(Object):
             "diameter"      : str(self.diameter) + " km",
             "atmosphere"    : str(self.atmosphere) + " %",
             "hospitability" : str(self.hospitability) + " %",
-            "civilizations" : civ_list_cleaned,
         }
+
+        iteration_counter = 0
+        civ_count = ""
+        civ_id = "civilization"
+        if len(self.civilization_list) > 0:
+            for item in self.civilization_list:
+                iteration_counter = iteration_counter + 1
+                civ_count = str(item.get_name() + " , " + str( int( item.get_count() ) ) )
+                civ_id_specific = civ_id + str(iteration_counter)
+                dataslate_data[civ_id_specific] = civ_count
 
         return dataslate_data

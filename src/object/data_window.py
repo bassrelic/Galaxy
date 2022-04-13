@@ -17,6 +17,7 @@ class Dataslate(Object):
     def step(self):
         """This Method defines the step behaviour of the Dataslate"""
         font = pygame.font.SysFont('Arial', 16)
+        self.set_path()
         data_dict = self.parent.get_dataslate_data()
         writetext = ''
         y_pos_text = 20

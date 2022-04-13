@@ -28,6 +28,9 @@ def spawn_civilization(planet):
 def force_spawn_civilization(planet):
     """This Funciton checks if the given civilization can exist and thus spawn on the given planet"""
 
+    if planet.get_atmosphere() is None:
+        raise ValueError("Cant spawn on a Object wothout atmosphere")
+
     while True:
         civ = Civilization("test")
         civ_min_temp = civ.get_min_temp()

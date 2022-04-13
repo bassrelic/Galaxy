@@ -1,6 +1,7 @@
 """This is the main file"""
 from datetime import timedelta, date
 import pygame
+from civilization.civilization_spawner import force_spawn_civilization
 from galaxy.galaxy import Galaxy
 from  game_logic.ui_handlers import DataslateHandler
 import config
@@ -21,7 +22,7 @@ if __name__ == '__main__':
     pygame.display.set_icon(icon)
 
     window_size = pygame.display.get_window_size()
-    
+
     # pylint:disable-next=invalid-name
     active = True
     config.clock = pygame.time.Clock()
@@ -40,6 +41,9 @@ if __name__ == '__main__':
         planets = sol.get_planets()
         for planet in planets:
             print(planet.get_name())
+            if planet.get_atmosphere() is not None:
+                planet.add_civilization(force_spawn_civilization(planet))
+                planet.add_civilization(force_spawn_civilization(planet))
             for civilization in planet.get_civilizations():
                 print(civilization.get_name())
                 print(civilization.get_count())
