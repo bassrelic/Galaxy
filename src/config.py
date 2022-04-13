@@ -8,3 +8,5 @@ FONT = None
 
 # pylint:disable-next=invalid-name
 screen = None
+
+ICONPATH = "res\\icons\\icon.png"
