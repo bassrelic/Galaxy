@@ -7,7 +7,9 @@ from object.object import Object
 class System(Object):
     """This class defines a System"""
     def __init__(self, name):
-        self.path = None
+        self.path = "res\\ui_elements\\empty.png"
+        self.width = 0
+        self.height = 0
         super().__init__(name, 0, 0)
         self.planet_list = []
         posx = 100

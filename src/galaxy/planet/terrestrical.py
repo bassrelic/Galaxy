@@ -6,10 +6,11 @@ from civilization.civilization_spawner import spawn_civilization
 class Terrestrical(Planet):
     """This class defines a terrestrical Planet"""
     def __init__(self, name, posx, posy):
+        super().__init__(name, posx, posy)
         self.path = "res\\planets\\gas\\gasPlanet_0.png"
         self.width = 100
         self.height = 100
-        super().__init__(name, posx, posy)
+        self.set_path()
         diameter = -1
         while diameter <= 0:
             diameter = int(gauss(12741000, 10000))

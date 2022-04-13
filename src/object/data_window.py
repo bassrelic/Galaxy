@@ -6,12 +6,13 @@ import config
 class Dataslate(Object):
     """This class defines datawindows in terms of size and looks"""
     def __init__(self, name, posx, posy):
+        super().__init__(name, posx, posy)
         self.name = name
         self.path = "res\\ui_elements\\dataslate.png"
         self.width = 200
         self.height = 150
+        self.set_path()
         self.parent = None
-        super().__init__(self.name, posx, posy)
 
     def step(self):
         """This Method defines the step behaviour of the Dataslate"""
