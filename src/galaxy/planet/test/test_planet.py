@@ -8,6 +8,9 @@ def test_baseclass_not_instanciable():
     try:
         # pylint: disable-next=unused-variable; expected because this should throw an exception
         planet = Planet(name, 1, 2)
-        assert False
+        if planet.path is None:
+            assert True
+        else:
+            assert False
     except AttributeError:
         assert True

@@ -6,13 +6,14 @@ from  game_logic.ui_handlers import DataslateHandler
 import config
 
 if __name__ == '__main__':
-    """This is the main Function of this Game"""
     curr_date = date.fromisoformat('2022-01-01')
     time_delta_per_sec = timedelta(days=1)
+    # pylint:disable-next=invalid-name
+    clock = None
 
     # pygame section
     pygame.init()
-    config.myfont = pygame.freetype.SysFont('Arial', 20)
+    config.FONT = pygame.freetype.SysFont('Arial', 20)
     config.screen = pygame.display.set_mode()
     pygame.display.set_caption("Galaxy")
 
@@ -20,14 +21,14 @@ if __name__ == '__main__':
     pygame.display.set_icon(icon)
 
     window_size = pygame.display.get_window_size()
-
-
+    
+    # pylint:disable-next=invalid-name
     active = True
     config.clock = pygame.time.Clock()
 
     # location of ui elements
-    fps_counter_loc_x = window_size[0] - 50
-    fps_counter_loc_y = 0
+    FPS_COUNTER_LOC_X = window_size[0] - 50
+    FPS_COUNTER_LOC_Y = 0
 
     # testing stuff
     galaxy = Galaxy("Milkyway")
@@ -60,8 +61,8 @@ if __name__ == '__main__':
             all_sprites_list.add(astroid)
 
     # events
-    update_time = pygame.USEREVENT + 0
-    pygame.time.set_timer(update_time, config.SECOND)
+    UPDATE_TIME = pygame.USEREVENT + 0
+    pygame.time.set_timer(UPDATE_TIME, config.SECOND)
 
     # logic
     ds_h = DataslateHandler()
@@ -74,15 +75,17 @@ if __name__ == '__main__':
                 ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
+                # pylint:disable-next=invalid-name
                 active = False
                 print("Player quitted this game")
 
             elif event.type == pygame.KEYDOWN:
                 # Quit game on escape
                 if event.key in [pygame.K_ESCAPE, pygame.K_q]:
+                    # pylint:disable-next=invalid-name
                     active = False
 
-            elif event.type == update_time:
+            elif event.type == UPDATE_TIME:
                 curr_date = curr_date + time_delta_per_sec
 
         # Logic here
@@ -95,9 +98,10 @@ if __name__ == '__main__':
         config.screen.fill(config.BLACK)
 
         # Draw Objects
+        # pylint:disable-next=invalid-name
         fps_counter = str(round(config.clock.get_fps(), 2))
-        config.myfont.render_to(config.screen, (fps_counter_loc_x, fps_counter_loc_y), fps_counter, config.WHITE)
-        config.myfont.render_to(config.screen, (0, 0), str(curr_date), config.WHITE)
+        config.FONT.render_to(config.screen, (FPS_COUNTER_LOC_X, FPS_COUNTER_LOC_Y), fps_counter, config.WHITE)
+        config.FONT.render_to(config.screen, (0, 0), str(curr_date), config.WHITE)
         all_sprites_list.draw(config.screen)
 
         # Update screen
