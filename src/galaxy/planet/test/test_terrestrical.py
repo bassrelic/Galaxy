@@ -71,19 +71,21 @@ def test_get_dataslate_data():
     """This method tests the returned dict containing the necessairy data for the corresponding dataslate"""
     terrestrical = Terrestrical("99942 Apophis", 0, 1)
 
-    terrestrical.set_temp_range(-100, 100)
+    terrestrical.set_temp_range(20, 21)
     terrestrical.set_diameter(2000)
     terrestrical.set_atmosphere(0.5)
     terrestrical.set_hospitability(0.6)
     civ = Civilization("Marsians")
     terrestrical.add_civilization(civ)
 
+    civ_data = civ.get_name() + " , " + str(civ.get_count())
+
     data = terrestrical.get_dataslate_data()
 
     assert data["Name"] == "99942 Apophis"
-    assert data["min temp"] == "-100 °C"
-    assert data["max temp"] == "100 °C"
+    assert data["min temp"] == "20 °C"
+    assert data["max temp"] == "21 °C"
     assert data["diameter"] == "2000.00 km"
     assert data["atmosphere"] == "0.50 %"
     assert data["hospitability"] == "0.60 %"
-    assert data["civilizations"] == "Marsians"
+    assert data["civilization1"] == civ_data

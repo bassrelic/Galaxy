@@ -22,7 +22,7 @@ if __name__ == '__main__':
     pygame.display.set_icon(icon)
 
     window_size = pygame.display.get_window_size()
-    
+
     # pylint:disable-next=invalid-name
     active = True
     config.clock = pygame.time.Clock()

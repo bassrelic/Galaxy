@@ -93,7 +93,5 @@ class Planet(Object):
                 civ_count = str(item.get_name() + " , " + str( int( item.get_count() ) ) )
                 civ_id_specific = civ_id + str(iteration_counter)
                 dataslate_data[civ_id_specific] = civ_count
-        else:
-            civ_count_cleaned = "None"
 
         return dataslate_data
