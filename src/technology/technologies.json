@@ -1,0 +1,61 @@
+{
+    "optics":{
+        "name": "Optics",
+        "description": "Research fundamentals of optics",
+        "research": "500",
+        "rereq":{
+        }
+    },
+    "laser":{
+        "name": "Laser",
+        "description": "Research laser",
+        "research": 1000,
+        "prereq":{
+            "name": "Optics"
+        }
+    },
+    "laserGuidance":{
+        "name": "Laser guidance",
+        "description": "Research laser guidance technology",
+        "research": 1000,
+        "prereq":{
+            "name": "Laser"
+        }
+    },
+    "lasercannon":{
+        "name": "Laser cannon",
+        "description": "Research laser cannons",
+        "research": 10000,
+        "prereq":{
+            "name": "Laser guidance"
+        }
+    },
+    "rocketboosters":{
+        "name": "Rocket booster",
+        "description": "Research rocket booster technology",
+        "research": 1000,
+        "prereq":{
+        }
+    },
+    "sensormodule":{
+        "name": "Sensormodule",
+        "description": "Research Sensormodules which can be used to equip on spaceships or survey craft",
+        "research": 2000,
+        "prereq":{
+        }
+    },
+    "landingmodule":{
+        "name": "Landing module",
+        "description": "Research landing modules to be able to land equipment, people and machinery on the surface of planets.",
+        "research": 1000,
+        "prereq":{
+        }
+    },
+    "habitat":{
+        "name": "Habitat",
+        "description": "Research habitat modules to be able to colonize on otherwise unhabitable objects",
+        "research": 1000,
+        "prereq":{
+        }
+    }
+}
