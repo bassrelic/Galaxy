@@ -113,5 +113,21 @@
         "prereq":{
             "name": "displacement"
         }
+    },
+    "displacement_facility":{
+        "name": "Displacement facility",
+        "description": "Develop a building capable of displacing objects",
+        "research": 15000,
+        "prereq":{
+            "name": "displacement"
+        }
+    },
+    "displacement_turret":{
+        "name": "Displacement turret",
+        "description": "Develop a turret to be mounted on your ships",
+        "research": 50000,
+        "prereq":{
+            "name": "displacement"
+        }
     }
 }
