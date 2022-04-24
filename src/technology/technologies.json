@@ -1,0 +1,133 @@
+{
+    "optics":{
+        "name": "Optics",
+        "description": "Research fundamentals of optics",
+        "research": "500",
+        "rereq":{
+        }
+    },
+    "laser":{
+        "name": "Laser",
+        "description": "Research laser",
+        "research": 1000,
+        "prereq":{
+            "name": "Optics"
+        }
+    },
+    "laserGuidance":{
+        "name": "Laser guidance",
+        "description": "Research laser guidance technology",
+        "research": 1000,
+        "prereq":{
+            "name": "Laser"
+        }
+    },
+    "lasercannon":{
+        "name": "Laser cannon",
+        "description": "Research laser cannons",
+        "research": 10000,
+        "prereq":{
+            "name": "Laser guidance"
+        }
+    },
+    "rocketboosters":{
+        "name": "Rocket booster",
+        "description": "Research rocket booster technology",
+        "research": 1000,
+        "prereq":{
+        }
+    },
+    "sensormodule":{
+        "name": "Sensormodule",
+        "description": "Research Sensormodules which can be used to equip on spaceships or survey craft",
+        "research": 2000,
+        "prereq":{
+        }
+    },
+    "landingmodule":{
+        "name": "Landing module",
+        "description": "Research landing modules to be able to land equipment, people and machinery on the surface of planets.",
+        "research": 1000,
+        "prereq":{
+        }
+    },
+    "habitat":{
+        "name": "Habitat",
+        "description": "Research habitat modules to be able to colonize on otherwise unhabitable objects",
+        "research": 1000,
+        "prereq":{
+        }
+    },
+    "displacement":{
+        "name": "Displacement basic research",
+        "description": "Research displacement technology which might yield various applications if researched more thoroughly.",
+        "research": 5000,
+        "prereq":{
+            "name": "sensormodule"
+        }
+    },
+    "displacement2":{
+        "name": "Displacement of non liquids",
+        "description": "Research displacement technology allowing displacement of non liquid objects of the same type",
+        "research": 5000,
+        "prereq":{
+            "name": "displacement"
+        }
+    },
+    "displacement3":{
+        "name": "Displacement of liquids",
+        "description": "Research displacement technology allowing displacement of liquids of the same type",
+        "research": 7500,
+        "prereq":{
+            "name": "displacement2"
+        }
+    },
+    "displacement4":{
+        "name": "Displacement of combined materials",
+        "description": "Research displacement technology allowing displacement of constructions and machinery",
+        "research": 20000,
+        "prereq":{
+            "name": "displacement3"
+        }
+    },
+    "displacement_accuracy":{
+        "name": "Displacement accuracy enhancement",
+        "description": "Research the accuracy of displacement technology to increase success rate and accuracy of displacements",
+        "research": 10000,
+        "prereq":{
+            "name": "displacement"
+        }
+    },
+    "displacement_preperation_time":{
+        "name": "Displacement preparation enhancement",
+        "description": "Research displacement even more to be able to displace objects faster than before.",
+        "research": 10000,
+        "prereq":{
+            "name": "displacement"
+        }
+    },
+    "displacement_distance":{
+        "name": "Displacement distance enhancement",
+        "description": "Research displacement even more to be able to displace objects further distances.",
+        "research": 10000,
+        "prereq":{
+            "name": "displacement"
+        }
+    },
+    "displacement_facility":{
+        "name": "Displacement facility",
+        "description": "Develop a building capable of displacing objects",
+        "research": 15000,
+        "prereq":{
+            "name": "displacement"
+        }
+    },
+    "displacement_turret":{
+        "name": "Displacement turret",
+        "description": "Develop a turret to be mounted on your ships",
+        "research": 50000,
+        "prereq":{
+            "name": "displacement"
+        }
+    }
+}
