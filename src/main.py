@@ -25,6 +25,7 @@ if __name__ == '__main__':
 
     # pylint:disable-next=invalid-name
     active = True
+    pause = False
     config.clock = pygame.time.Clock()
 
     # location of ui elements
@@ -75,7 +76,7 @@ if __name__ == '__main__':
 
         for event in pygame.event.get():
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and pause == False:
                 ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
@@ -88,13 +89,19 @@ if __name__ == '__main__':
                 if event.key in [pygame.K_ESCAPE, pygame.K_q]:
                     # pylint:disable-next=invalid-name
                     active = False
+                if event.key in [pygame.K_p, pygame.K_SPACE]:
+                    if pause == True:
+                        pause = False
+                    else:
+                        pause = True
 
-            elif event.type == UPDATE_TIME:
+            elif event.type == UPDATE_TIME and pause == False:
                 curr_date = curr_date + time_delta_per_sec
 
         # Logic here
-        for sprite in all_sprites_list:
-            sprite.step()
+        if pause == False:
+            for sprite in all_sprites_list:
+                sprite.step()
 
         all_sprites_list.update()
 
