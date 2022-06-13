@@ -3,6 +3,7 @@ from datetime import timedelta, date
 import pygame
 from civilization.civilization_spawner import force_spawn_civilization
 from galaxy.galaxy import Galaxy
+from object.research_window import Research
 from  game_logic.ui_handlers import DataslateHandler
 import config
 
@@ -25,7 +26,12 @@ if __name__ == '__main__':
 
     # pylint:disable-next=invalid-name
     active = True
+
+    # pylint:disable-next=invalid-name
+    pause = False
     config.clock = pygame.time.Clock()
+
+    researchWindow = False
 
     # location of ui elements
     FPS_COUNTER_LOC_X = window_size[0] - 50
@@ -75,7 +81,7 @@ if __name__ == '__main__':
 
         for event in pygame.event.get():
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and pause is False:
                 ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
@@ -88,13 +94,34 @@ if __name__ == '__main__':
                 if event.key in [pygame.K_ESCAPE, pygame.K_q]:
                     # pylint:disable-next=invalid-name
                     active = False
+                # Pause game
+                if event.key in [pygame.K_p, pygame.K_SPACE]:
+                    if pause is True:
+                        # pylint:disable-next=invalid-name
+                        pause = False
+                    else:
+                        # pylint:disable-next=invalid-name
+                        pause = True
 
-            elif event.type == UPDATE_TIME:
+                if event.key is pygame.K_r:
+                    if researchWindow is False:
+                        print("Show research screen please")
+                        research = Research("research", 0, 0)
+                        all_sprites_list.add(research)
+                        researchWindow = True
+                    else:
+                        print("Close Researchwindow please")
+                        all_sprites_list.remove(research)
+                        researchWindow = False
+
+
+            elif event.type == UPDATE_TIME and pause is False:
                 curr_date = curr_date + time_delta_per_sec
 
         # Logic here
-        for sprite in all_sprites_list:
-            sprite.step()
+        if pause is False:
+            for sprite in all_sprites_list:
+                sprite.step()
 
         all_sprites_list.update()
 
