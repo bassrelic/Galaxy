@@ -25,6 +25,8 @@ if __name__ == '__main__':
 
     # pylint:disable-next=invalid-name
     active = True
+
+    # pylint:disable-next=invalid-name
     pause = False
     config.clock = pygame.time.Clock()
 
@@ -76,7 +78,7 @@ if __name__ == '__main__':
 
         for event in pygame.event.get():
 
-            if event.type == pygame.MOUSEBUTTONDOWN and pause == False:
+            if event.type == pygame.MOUSEBUTTONDOWN and pause is False:
                 ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
@@ -90,16 +92,18 @@ if __name__ == '__main__':
                     # pylint:disable-next=invalid-name
                     active = False
                 if event.key in [pygame.K_p, pygame.K_SPACE]:
-                    if pause == True:
+                    if pause is True:
+                        # pylint:disable-next=invalid-name
                         pause = False
                     else:
+                        # pylint:disable-next=invalid-name
                         pause = True
 
-            elif event.type == UPDATE_TIME and pause == False:
+            elif event.type == UPDATE_TIME and pause is False:
                 curr_date = curr_date + time_delta_per_sec
 
         # Logic here
-        if pause == False:
+        if pause is False:
             for sprite in all_sprites_list:
                 sprite.step()
 
