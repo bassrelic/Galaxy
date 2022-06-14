@@ -1,10 +1,10 @@
-##What is this?  
+## What is this? 
 This is intended to	be a space	game where yoy control
 your	own	species, interact with other races	and
 struggle through social and	economic	troubles  	 	
 Work	in	progress as you can see...	 
    		 		  
-##How	to	set up?   		
+##	How	to set up?  		
 Create venv  		 		  
 ```virtualenv	--python	python <venvname>```   	  
    		 				
