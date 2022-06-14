@@ -9,6 +9,7 @@ import config
 
 if __name__ == '__main__':
     curr_date = date.fromisoformat('2022-01-01')
+    show_date = ""
     time_delta_per_sec = timedelta(days=1)
     # pylint:disable-next=invalid-name
     clock = None
@@ -31,6 +32,7 @@ if __name__ == '__main__':
     pause = False
     config.clock = pygame.time.Clock()
 
+    # pylint:disable-next=invalid-name
     researchWindow = False
 
     # location of ui elements
@@ -108,15 +110,21 @@ if __name__ == '__main__':
                         print("Show research screen please")
                         research = Research("research", 0, 0)
                         all_sprites_list.add(research)
+
+                        # pylint:disable-next=invalid-name
                         researchWindow = True
                     else:
                         print("Close Researchwindow please")
                         all_sprites_list.remove(research)
+                        # pylint:disable-next=invalid-name
                         researchWindow = False
 
 
             elif event.type == UPDATE_TIME and pause is False:
                 curr_date = curr_date + time_delta_per_sec
+                show_date = curr_date
+            elif pause is True:
+                show_date = str(curr_date) + " PAUSED"
 
         # Logic here
         if pause is False:
@@ -132,7 +140,7 @@ if __name__ == '__main__':
         # pylint:disable-next=invalid-name
         fps_counter = str(round(config.clock.get_fps(), 2))
         config.FONT.render_to(config.screen, (FPS_COUNTER_LOC_X, FPS_COUNTER_LOC_Y), fps_counter, config.WHITE)
-        config.FONT.render_to(config.screen, (0, 0), str(curr_date), config.WHITE)
+        config.FONT.render_to(config.screen, (0, 0), str(show_date), config.WHITE)
         all_sprites_list.draw(config.screen)
 
         # Update screen
