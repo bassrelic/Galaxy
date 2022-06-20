@@ -12,7 +12,6 @@ class Civilization:
         self.count = int(random()*1000000)
         self.technologie_list = []
         self.belief_list = []
-        self.technologie_list.append(Technology("Fire"))
         self.belief_list.append(Belief("God", 0.5))
         self.belief_list.append(Belief.gen_random_belief())
         self.min_atmosphere = random()
