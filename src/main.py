@@ -9,7 +9,7 @@ import config
 
 if __name__ == '__main__':
     curr_date = date.fromisoformat('2022-01-01')
-    show_date = ""
+    SHOW_DATE = ""
     time_delta_per_sec = timedelta(days=1)
     # pylint:disable-next=invalid-name
     clock = None
@@ -25,15 +25,12 @@ if __name__ == '__main__':
 
     window_size = pygame.display.get_window_size()
 
-    # pylint:disable-next=invalid-name
-    active = True
+    ACTIVE = True
 
-    # pylint:disable-next=invalid-name
-    pause = False
+    PAUSE = False
     config.clock = pygame.time.Clock()
 
-    # pylint:disable-next=invalid-name
-    researchWindow = False
+    RESEARCH_WINDOW = False
 
     # location of ui elements
     FPS_COUNTER_LOC_X = window_size[0] - 50
@@ -79,55 +76,49 @@ if __name__ == '__main__':
     # logic
     ds_h = DataslateHandler()
 
-    while active:
+    while ACTIVE:
 
         for event in pygame.event.get():
 
-            if event.type == pygame.MOUSEBUTTONDOWN and pause is False:
+            if event.type == pygame.MOUSEBUTTONDOWN and PAUSE is False:
                 ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
-                # pylint:disable-next=invalid-name
-                active = False
+                ACTIVE = False
                 print("Player quitted this game")
 
             elif event.type == pygame.KEYDOWN:
                 # Quit game on escape
                 if event.key in [pygame.K_ESCAPE, pygame.K_q]:
-                    # pylint:disable-next=invalid-name
-                    active = False
+                    ACTIVE = False
                 # Pause game
                 if event.key in [pygame.K_p, pygame.K_SPACE]:
-                    if pause is True:
-                        # pylint:disable-next=invalid-name
-                        pause = False
+                    if PAUSE is True:
+                        PAUSE = False
                     else:
-                        # pylint:disable-next=invalid-name
-                        pause = True
+                        PAUSE = True
 
                 if event.key is pygame.K_r:
-                    if researchWindow is False:
+                    if RESEARCH_WINDOW is False:
                         print("Show research screen please")
                         research = Research("research", 0, 0)
                         all_sprites_list.add(research)
 
-                        # pylint:disable-next=invalid-name
-                        researchWindow = True
+                        RESEARCH_WINDOW = True
                     else:
                         print("Close Researchwindow please")
                         all_sprites_list.remove(research)
-                        # pylint:disable-next=invalid-name
-                        researchWindow = False
+                        RESEARCH_WINDOW = False
 
 
-            elif event.type == UPDATE_TIME and pause is False:
+            elif event.type == UPDATE_TIME and PAUSE is False:
                 curr_date = curr_date + time_delta_per_sec
-                show_date = curr_date
-            elif pause is True:
-                show_date = str(curr_date) + " PAUSED"
+                SHOW_DATE = curr_date
+            elif PAUSE is True:
+                SHOW_DATE = str(curr_date) + " PAUSED"
 
         # Logic here
-        if pause is False:
+        if PAUSE is False:
             for sprite in all_sprites_list:
                 sprite.step()
 
@@ -140,7 +131,7 @@ if __name__ == '__main__':
         # pylint:disable-next=invalid-name
         fps_counter = str(round(config.clock.get_fps(), 2))
         config.FONT.render_to(config.screen, (FPS_COUNTER_LOC_X, FPS_COUNTER_LOC_Y), fps_counter, config.WHITE)
-        config.FONT.render_to(config.screen, (0, 0), str(show_date), config.WHITE)
+        config.FONT.render_to(config.screen, (0, 0), str(SHOW_DATE), config.WHITE)
         all_sprites_list.draw(config.screen)
 
         # Update screen

@@ -9,19 +9,20 @@ class Research(Object):
         super().__init__(name, posx, posy)
         self.name = name
         self.path = "res\\ui_elements\\dataslate.png"
-        self.width = 200
-        self.height = 150
+        self.width = 1900
+        self.height = 1000
         self.set_path()
         self.parent = None
 
     def step(self):
-        """This Method defines the step behaviour of the Dataslate"""
-        font = pygame.font.SysFont('Arial', 16)
+        """This Method defines the step behaviour of the Research window"""
+        font_size = 32
+        font = pygame.font.SysFont('Arial', font_size)
         self.set_path()
-        writetext = ''
-        y_pos_text = 20
 
-        writetext = "testtext"
+        writetext = "Research"
+        x_pos_text = self.width / 2 + self.posx - ( len(writetext) * font_size ) / 2
+        y_pos_text = self.posy + 50
+
         text = font.render(str(writetext), True, config.WHITE)
-        self.image.blit(text, (15, y_pos_text))
-        y_pos_text = y_pos_text + 15
+        self.image.blit(text, (x_pos_text, y_pos_text))
