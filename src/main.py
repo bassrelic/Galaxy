@@ -3,6 +3,7 @@ from datetime import timedelta, date
 import pygame
 from civilization.civilization_spawner import force_spawn_civilization
 from galaxy.galaxy import Galaxy
+from object.console import Console
 from  game_logic.ui_handlers import DataslateHandler
 import config
 
@@ -29,6 +30,9 @@ if __name__ == '__main__':
     # pylint:disable-next=invalid-name
     pause = False
     config.clock = pygame.time.Clock()
+
+    consoleActive = False
+    console = Console("Console", 0, int(window_size[1]-300))
 
     # location of ui elements
     FPS_COUNTER_LOC_X = window_size[0] - 50
@@ -98,6 +102,16 @@ if __name__ == '__main__':
                     else:
                         # pylint:disable-next=invalid-name
                         pause = True
+                # Open / close console
+                if event.key == pygame.K_c:
+                    if consoleActive == False:
+                        consoleActive = True
+                        # Console is handled as a sprite
+                        all_sprites_list.add(console)
+                    else:
+                        consoleActive = False
+                        # Console is handled as a sprite
+                        all_sprites_list.remove(console)
 
             elif event.type == UPDATE_TIME and pause is False:
                 curr_date = curr_date + time_delta_per_sec
@@ -106,6 +120,9 @@ if __name__ == '__main__':
         if pause is False:
             for sprite in all_sprites_list:
                 sprite.step()
+        # Console must not be paused
+        if consoleActive == True:
+            console.step()
 
         all_sprites_list.update()
 
