@@ -31,6 +31,7 @@ if __name__ == '__main__':
     pause = False
     config.clock = pygame.time.Clock()
 
+    # pylint:disable-next=invalid-name
     consoleActive = False
     console = Console("Console", 0, int(window_size[1]-300))
 
@@ -104,11 +105,13 @@ if __name__ == '__main__':
                         pause = True
                 # Open / close console
                 if event.key == pygame.K_c:
-                    if consoleActive == False:
+                    if consoleActive is False:
+                        # pylint:disable-next=invalid-name
                         consoleActive = True
                         # Console is handled as a sprite
                         all_sprites_list.add(console)
                     else:
+                        # pylint:disable-next=invalid-name
                         consoleActive = False
                         # Console is handled as a sprite
                         all_sprites_list.remove(console)
@@ -121,7 +124,7 @@ if __name__ == '__main__':
             for sprite in all_sprites_list:
                 sprite.step()
         # Console must not be paused
-        if consoleActive == True:
+        if consoleActive is True:
             console.step()
 
         all_sprites_list.update()
