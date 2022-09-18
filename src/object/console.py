@@ -13,6 +13,7 @@ class Console(Object):
         self.height = 300
         self.set_path()
         self.parent = None
+        self.consoleTextList = ["~~~This is the console, feel free to try stuff~~~"]
 
     def step(self):
         """This Method defines the step behaviour of the Dataslate"""
@@ -21,15 +22,15 @@ class Console(Object):
         titleText = self.name
         text = font.render(str(titleText), True, config.WHITE)
         self.image.blit(text, (75, 10))
-        #writetext= "Hello World"
-        #text = font.render(str(writetext), True, config.WHITE)
-        #self.image.blit(text, (15, 0))
+        y_pos_text = 40
 
-#        data_dict = self.parent.get_dataslate_data()
-#        writetext = ''
-#        y_pos_text = 20
+        for element in self.consoleTextList:
+            writetext = element
+            text = font.render(str(writetext), True, config.WHITE)
+            self.image.blit(text, (125, y_pos_text))
+            y_pos_text = y_pos_text + 25
 #        for data_type, data_value in data_dict.items():
 #            writetext = str(data_type) + " : " + str(data_value)
 #            
-#            self.image.blit(text, (15, y_pos_text))
+#            self.image.blit(text, (100, y_pos_text))
 #            y_pos_text = y_pos_text + 15
