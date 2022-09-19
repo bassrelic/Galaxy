@@ -7,7 +7,6 @@ def getkeystroke():
     retval = None
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            
             if event.key is pygame.K_a:
                 retval = 'a'
             elif event.key is pygame.K_b:

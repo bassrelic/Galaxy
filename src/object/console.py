@@ -21,19 +21,19 @@ class ConsoleHandling():
             print(command)
             print(len(command))
             if command[0] == "$set" and len(command) >= 4:
-                    if command[1] == "hosp" and len(command) is 5:
-                        # get entity name
-                        name = command[2]
-                        # get value
-                        value = str(command[3] + "." + command[4])
-                        for item in spriteslist:
-                                if isinstance(item, Planet) and item.get_name().lower() == name:
-                                    item.set_hospitability(float(value))
-                                    retcommand = str(str(command) + "\n executed!")
-                                    console.write_text_to_console(retcommand)
+                if command[1] == "hosp" and len(command) == 5:
+                    # get entity name
+                    name = command[2]
+                    # get value
+                    value = str(command[3] + "." + command[4])
+                    for item in spriteslist:
+                        if isinstance(item, Planet) and item.get_name().lower() == name:
+                            item.set_hospitability(float(value))
+                            retcommand = str(str(command) + "\n executed!")
+                            console.write_text_to_console(retcommand)
             else:
                 console.write_text_to_console("Unknown command!")
-            
+
             self.new_command = False
             self.last_executed = self.last_executed + 2 # next line we are interested in is after console response
 
