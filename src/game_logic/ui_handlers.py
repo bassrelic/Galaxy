@@ -26,7 +26,31 @@ class DataslateHandler():
                 self.selected_sprite = None
 
         if self.selected_sprite is not None:
-            if isinstance(self.selected_sprite, Dataslate):
+            if isinstance(self.selected_sprite, Console):
+                #Handling console here
+                console = None
+                for sprite in all_sprites_list:
+                    if sprite.get_name() == "Console":
+                        console = sprite
+                        break
+
+                writing = True
+                while writing is True:
+                    char = getkeystroke()
+                    if char == pygame.K_ESCAPE:
+                        writing = False
+                    elif char == '\n':
+                        writing = False
+                        console.write_char_to_console(char)
+                    elif char is not None:
+                        console.write_char_to_console(char)
+
+                    console.step()
+                    all_sprites_list.draw(config.screen)
+                    # Update screen
+                    pygame.display.flip()
+
+            else:
                 print("clicked object: " + self.selected_sprite.get_name())
                 mouse_x_pos = pygame.mouse.get_pos()[0]
                 mouse_y_pos = pygame.mouse.get_pos()[1]
@@ -48,27 +72,3 @@ class DataslateHandler():
                     self.dataslate = Dataslate(self.selected_sprite.get_name(), mouse_x_pos, mouse_y_pos)
                     all_sprites_list.add(self.dataslate)
                     self.dataslate.set_parent(self.selected_sprite)
-            elif isinstance(self.selected_sprite, Console):
-                #Handling console here
-                console = None
-                for sprite in all_sprites_list:
-                    if sprite.get_name() == "Console":
-                        console = sprite
-                        break
-
-
-                writing = True
-                while writing is True:
-                    char = getkeystroke()
-                    if char == pygame.K_ESCAPE:
-                        writing = False
-                    elif char == '\n':
-                        writing = False
-                        console.write_to_console(char)
-                    elif char is not None:
-                        console.write_to_console(char)
-
-                    console.step()
-                    all_sprites_list.draw(config.screen)
-                    # Update screen
-                    pygame.display.flip()
