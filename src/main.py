@@ -123,9 +123,11 @@ if __name__ == '__main__':
         if pause is False:
             for sprite in all_sprites_list:
                 sprite.step()
+
         # Console must not be paused
         if consoleActive is True:
             console.step()
+            console.handle_commands(all_sprites_list)
 
         all_sprites_list.update()
 

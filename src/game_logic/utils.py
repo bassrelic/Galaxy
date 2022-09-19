@@ -7,6 +7,7 @@ def getkeystroke():
     retval = None
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
+            
             if event.key is pygame.K_a:
                 retval = 'a'
             elif event.key is pygame.K_b:
@@ -59,10 +60,34 @@ def getkeystroke():
                 retval = 'y'
             elif event.key is pygame.K_z:
                 retval = 'z'
+            elif event.key is pygame.K_0:
+                retval = '0'
+            elif event.key is pygame.K_1:
+                retval = '1'
+            elif event.key is pygame.K_2:
+                retval = '2'
+            elif event.key is pygame.K_3:
+                retval = '3'
+            elif event.key is pygame.K_4:
+                retval = '4'
+            elif event.key is pygame.K_5:
+                retval = '5'
+            elif event.key is pygame.K_6:
+                retval = '6'
+            elif event.key is pygame.K_7:
+                retval = '7'
+            elif event.key is pygame.K_8:
+                retval = '8'
+            elif event.key is pygame.K_9:
+                retval = '9'
             elif event.key is pygame.K_KP_EQUALS:
                 retval = '='
             elif event.key is pygame.K_PERIOD:
                 retval = '.'
+            elif event.key is pygame.K_COMMA:
+                retval = ','
+            elif event.key is pygame.K_MINUS:
+                retval = '-'
             elif event.key is pygame.K_RETURN:
                 retval = '\n'
             else:
