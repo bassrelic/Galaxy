@@ -29,9 +29,6 @@ class UiObject(pygame.sprite.Sprite):
         self.rect.x = self.posx
         self.rect.y = self.posy
 
-        print(f'Position: ({self.rect.x}, {self.rect.y})')
-
-
     def getx_pos(self):
         """This method gets the x position"""
         return self.rect.x
