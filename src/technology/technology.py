@@ -26,7 +26,7 @@ class Technology:
 
     @classmethod
     def get_all_technology_list(cls):
-        """This method generates a random beief with random intensity"""
+        """This method retrieves all technologies"""
         with open('src\\technology\\technologies.json', encoding="utf-8") as json_file:
             data = json.load(json_file)
         return data

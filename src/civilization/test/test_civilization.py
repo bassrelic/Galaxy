@@ -22,12 +22,12 @@ def test_get_beliefs():
     for obj in beliefs:
         assert isinstance(obj, Belief)
 
-def test_get_technologies():
-    """ Testing the get_technologies method and objtype """
-    technologies = civ.get_technologies()
-    assert technologies[0].get_name() == "Fire"
-    for obj in technologies:
-        assert isinstance(obj, Technology)
+# def test_get_technologies():
+#     """ Testing the get_technologies method and objtype """
+#     technologies = civ.get_technologies()
+#     assert technologies[0].get_name() == "Fire"
+#     for obj in technologies:
+#         assert isinstance(obj, Technology)
 
 def test_get_min_atmosphere():
     """ Testing the get_min_atmosphere method"""
