@@ -2,7 +2,6 @@
 from random import randint, random
 from civilization.language.language import Language
 from civilization.belief.belief import Belief
-from technology.technology import Technology
 
 class Civilization:
     """This class shall define a civilization"""
