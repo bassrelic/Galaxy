@@ -16,16 +16,17 @@ class Dataslate(Object):
 
     def step(self):
         """This Method defines the step behaviour of the Dataslate"""
-        font = pygame.font.SysFont('Arial', 16)
-        self.set_path()
         data_dict = self.parent.get_dataslate_data()
-        writetext = ''
-        y_pos_text = 20
-        for data_type, data_value in data_dict.items():
-            writetext = str(data_type) + " : " + str(data_value)
-            text = font.render(str(writetext), True, config.WHITE)
-            self.image.blit(text, (15, y_pos_text))
-            y_pos_text = y_pos_text + 15
+        if None is not data_dict:
+            font = pygame.font.SysFont('Arial', 16)
+            self.set_path()
+            writetext = ''
+            y_pos_text = 20
+            for data_type, data_value in data_dict.items():
+                writetext = str(data_type) + " : " + str(data_value)
+                text = font.render(str(writetext), True, config.WHITE)
+                self.image.blit(text, (15, y_pos_text))
+                y_pos_text = y_pos_text + 15
 
     def set_parent(self, parent):
         """This method sets the parent class of this dataslate"""
