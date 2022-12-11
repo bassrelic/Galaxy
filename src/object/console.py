@@ -21,6 +21,7 @@ class ConsoleHandling():
             print(command)
             print(len(command))
             if command[0] == "$set" and len(command) >= 4:
+                # Example command: set.hosp.earth.0.0 sets the hospitality of earth to 0%
                 if command[1] == "hosp" and len(command) == 5:
                     # get entity name
                     name = command[2]
