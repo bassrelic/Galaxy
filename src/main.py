@@ -4,6 +4,7 @@ import pygame
 from civilization.civilization_spawner import force_spawn_civilization
 from galaxy.galaxy import Galaxy
 from object.research_window import Research
+from object.console import Console
 from  game_logic.ui_handlers import DataslateHandler
 import config
 
@@ -25,12 +26,19 @@ if __name__ == '__main__':
 
     window_size = pygame.display.get_window_size()
 
-    ACTIVE = True
+    # pylint:disable-next=invalid-name
+    active = True
 
-    PAUSE = False
+    # pylint:disable-next=invalid-name
+    pause = False
     config.clock = pygame.time.Clock()
 
-    RESEARCH_WINDOW = False
+    # pylint:disable-next=invalid-name
+    research_window = False
+
+    # pylint:disable-next=invalid-name
+    consoleActive = False
+    console = Console("Console", 0, int(window_size[1]-300))
 
     # location of ui elements
     FPS_COUNTER_LOC_X = window_size[0] - 50
@@ -76,51 +84,75 @@ if __name__ == '__main__':
     # logic
     ds_h = DataslateHandler()
 
-    while ACTIVE:
+    while active:
 
         for event in pygame.event.get():
 
-            if event.type == pygame.MOUSEBUTTONDOWN and PAUSE is False:
+            if event.type == pygame.MOUSEBUTTONDOWN and pause is False:
                 ds_h.handle_dataslate(all_sprites_list)
 
             if event.type == pygame.QUIT:
-                ACTIVE = False
+                # pylint:disable-next=invalid-name
+                active = False
                 print("Player quitted this game")
 
             elif event.type == pygame.KEYDOWN:
                 # Quit game on escape
                 if event.key in [pygame.K_ESCAPE, pygame.K_q]:
-                    ACTIVE = False
-                # Pause game
+                    # pylint:disable-next=invalid-name
+                    active = False
                 if event.key in [pygame.K_p, pygame.K_SPACE]:
-                    if PAUSE is True:
-                        PAUSE = False
+                    if pause is True:
+                        # pylint:disable-next=invalid-name
+                        pause = False
                     else:
-                        PAUSE = True
+                        # pylint:disable-next=invalid-name
+                        pause = True
+
+                # Open / close console
+                if event.key == pygame.K_c:
+                    if consoleActive is False:
+                        # pylint:disable-next=invalid-name
+                        consoleActive = True
+                        # Console is handled as a sprite
+                        all_sprites_list.add(console)
+                    else:
+                        # pylint:disable-next=invalid-name
+                        consoleActive = False
+                        # Console is handled as a sprite
+                        all_sprites_list.remove(console)
 
                 if event.key is pygame.K_r:
-                    if RESEARCH_WINDOW is False:
-                        print("Show research screen please")
+                    if research_window is False:
+                        # pylint:disable-next=invalid-name
                         research = Research("research", 0, 0)
                         all_sprites_list.add(research)
+                        all_sprites_list.add(research.get_sprites())
 
-                        RESEARCH_WINDOW = True
+                        # pylint:disable-next=invalid-name
+                        research_window = True
                     else:
-                        print("Close Researchwindow please")
+                        # pylint:disable-next=invalid-name
                         all_sprites_list.remove(research)
-                        RESEARCH_WINDOW = False
+                        all_sprites_list.remove(research.get_sprites())
+                        # pylint:disable-next=invalid-name
+                        research_window = False
 
-
-            elif event.type == UPDATE_TIME and PAUSE is False:
+            elif event.type == UPDATE_TIME and pause is False:
                 curr_date = curr_date + time_delta_per_sec
                 SHOW_DATE = curr_date
-            elif PAUSE is True:
+            elif pause is True:
                 SHOW_DATE = str(curr_date) + " PAUSED"
 
         # Logic here
-        if PAUSE is False:
+        if pause is False:
             for sprite in all_sprites_list:
                 sprite.step()
+
+        # Console must not be paused
+        if consoleActive is True:
+            console.step()
+            console.handle_commands(all_sprites_list)
 
         all_sprites_list.update()
 
