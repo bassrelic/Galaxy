@@ -8,8 +8,8 @@ class Tech(Object):
     def __init__(self, name, posx, posy, data):
         super().__init__(name, posx, posy)
         self.name = name
-        self.path = "res\\ui_elements\\dataslate.png"
-        self.width = 200
+        self.path = "res\\ui_elements\\empty.png"
+        self.width = 1500
         self.height = 100
         self.set_path()
         self.data = data
