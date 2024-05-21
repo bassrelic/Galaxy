@@ -129,7 +129,7 @@ pytz==2021.3
     # via
     #   -r requirements.in
     #   babel
-requests==2.31.0
+requests==2.32.0
     # via
     #   -r requirements.in
     #   sphinx
