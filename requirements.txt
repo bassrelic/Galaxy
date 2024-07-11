@@ -191,7 +191,7 @@ wrapt==1.13.3
     # via
     #   -r requirements.in
     #   astroid
-zipp==3.7.0
+zipp==3.19.1
     # via
     #   -r requirements.in
     #   importlib-metadata
